@@ -42,6 +42,7 @@ def display_inventory(inventory):
     inventory (dict): The current inventory
     """
     if len(inventory) == 0:
+        display_inventory
         print("Inventory is empty.")
     else:
         print("Current Inventory:")
@@ -56,8 +57,9 @@ inventory = {
 }
 
 while True:
-    print("\n1. Add item\n2. Remove item\n3. Update quantity\n4. Display inventory\n5. Exit")
-    choice = input("Enter your choice (1-5): ")
+    display_inventory(inventory)
+    print("\n1. Add item\n2. Remove item\n3. Update quantity\n4. Exit")
+    choice = input("Enter your choice (1-4): ")
 
     if choice == "1":
         name = input("Enter item name: ")
@@ -68,10 +70,10 @@ while True:
         remove_item(inventory, name)
     elif choice == "3":
         name = input("Enter item name to update: ")
-        quantity = input("Enter new quantity: ")
-        update_quantity(inventory, name, quantity)
-    elif choice == "4":
-        display_inventory(inventory)
+        new_quantity = input("Enter new quantity: ")
+        update_quantity(inventory,name,new_quantity)
+        print (name,new_quantity)
+        
     elif choice == "5":
         print("Exiting the program.")
         break
